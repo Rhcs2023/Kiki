@@ -42,7 +42,7 @@ if "messages" not in st.session_state.keys():
     ]
 
 @st.cache_resource(show_spinner=False)
-def load_data():
+def load_data1():
     with st.spinner(text="Obteniendo índices de los documentos, esta operación puede tardar unos minutos..."):
         qdrant = QdrantClient(
             url=QDRANT_CLUSTER, 
@@ -57,7 +57,7 @@ def load_data():
         index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
         return index
 
-index = load_data()
+index = load_data1()
 
 if "query_engine" not in st.session_state.keys():
     qa_prompt_tmpl = (
